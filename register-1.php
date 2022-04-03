@@ -25,14 +25,15 @@ if (isset($_POST['submit'])) {
 	$gender = $_POST['gender'];
 	$password = ($_POST['password']);
 	$cpassword = ($_POST['cpassword']);
+    $timestamp = date('Y-m-d H:i:s');
 
 	if ($password == $cpassword) {
 		$sql = "SELECT * FROM users WHERE email='$email'";
 		$result = mysqli_query($conn, $sql);
 		if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO users (firstname, lastname, salutation, suffix,  username,  email, gender, password) 
+			$sql = "INSERT INTO users (firstname, lastname, salutation, suffix,  username,  email, gender, password, date) 
 			-- addressline1, addressline2, barangay, region, zip,
-					VALUES ('$firstname', '$lastname', '$salutation', '$suffix', '$username', '$email', '$gender','$password')";
+					VALUES ('$firstname', '$lastname', '$salutation', '$suffix', '$username', '$email', '$gender','$password', '$timestamp')";
 					// '$addressline1', '$addressline2', '$barangay', '$region', '$zip',
 			$result = mysqli_query($conn, $sql);
 			if ($result) {
