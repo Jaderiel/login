@@ -6,6 +6,10 @@ $sql = "SELECT * FROM users";
 
 $result = $conn->query($sql);
 
+$sql2 = "SELECT * FROM user_add";
+
+$result2 = $conn->query($sql2);
+
 ?>
 
 <!DOCTYPE html>
@@ -77,6 +81,68 @@ $result = $conn->query($sql);
                     <td><?php echo $row['email']; ?></td>
 
                     <td><?php echo $row['gender']; ?></td>
+
+                    <td><a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Edit</a>&nbsp;<a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
+
+                    </tr>
+                                       
+
+        <?php       }
+
+            }
+
+        ?>                
+
+    </tbody>
+    
+
+</table>
+
+<table class="table">
+
+    <thead>
+
+        <tr>
+
+        <th>ID</th>
+
+        <th>Address Line 1</th>
+
+        <th>Address Line 2</th>
+
+        <th>Region</th>
+
+        <th>Barangay</th>
+
+        <th>Zip</th>
+
+    </tr>
+
+    </thead>
+
+    <tbody> 
+
+        <?php
+
+            if ($result2->num_rows > 0) {
+
+                while ($row = $result2->fetch_assoc()) {
+
+        ?>
+
+                    <tr>
+
+                    <td><?php echo $row['id']; ?></td>
+
+                    <td><?php echo $row['addressline1']; ?></td>
+
+                    <td><?php echo $row['addressline2']; ?></td>
+
+                    <td><?php echo $row['region']; ?></td>
+
+                    <td><?php echo $row['barangay']; ?></td>
+
+                    <td><?php echo $row['zip']; ?></td>
 
                     <td><a class="btn btn-info" href="update.php?id=<?php echo $row['id']; ?>">Edit</a>&nbsp;<a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
 
